@@ -1,34 +1,39 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Hello NextJS
 
-## Getting Started
+Reference: <https://www.apollographql.com/blog/apollo-client/next-js/next-js-getting-started/>
 
-First, run the development server:
+## Note
+
+This project demonstrates a simple SSR and Apollo implementation.
+
+Goals:
+
+- Check that the static page is returned in the page source
+- Check that re-hydration happens to load
+- Check that the payload correlates with SSG, SSR and CSR pages (refer to Demo section below).
+
+## Quick start
 
 ```bash
-npm run dev
-# or
 yarn dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Development build (default `localhost:3000`); Page is regenerated on every reload.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+```bash
+yarn build
+yarn start
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+# run production on another port
+yarn start -p 3001
+```
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+Build server-side static pages and run in production.
 
-## Learn More
+## Demo
 
-To learn more about Next.js, take a look at the following resources:
+Open the following pages in browser:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- `localhost:3000` - static page (`2.3kb` initial render, `665b` cached)
+- `localhost:3000/server-side` - SSR page (`2.3kb`)
+- `localhost:3000/client-side` - CSR page (`5.3kb`)
